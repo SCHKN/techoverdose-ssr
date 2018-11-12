@@ -12,6 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -20,10 +23,13 @@ var CardItem = function CardItem(props) {
     className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Image, {
     size: "tiny",
-    src: props.framework.imageURL
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Header, {
+    src: props.item.imageURL
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    as: "/framework/".concat(props.item.id, "/").concat(props.item.name),
+    href: "/framework?id=".concat(props.item.id)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Header, {
     as: "a"
-  }, props.framework.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Meta, null, props.framework.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Extra, null, "Created in ", props.framework.creationYear))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+  }, props.item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Meta, null, props.item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Extra, null, "Created in ", props.item.creationYear))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
     content: "10k",
     icon: "github"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
@@ -52908,10 +52914,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
 /* harmony import */ var _components_framework_CardItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/framework/CardItem */ "./components/framework/CardItem.jsx");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -52924,8 +52928,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
-var Hub = Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(function (props) {
+var Hub = Object(next_router__WEBPACK_IMPORTED_MODULE_6__["withRouter"])(function (props) {
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     style: {
       marginLeft: "10px"
@@ -52944,12 +52947,9 @@ var Hub = Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(functio
     columns: 3,
     stackable: true
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Row, null, props.frameworks && props.frameworks.map(function (framework) {
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
-      as: "/framework/".concat(framework.name),
-      href: "/framework?id=".concat(framework.id)
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_framework_CardItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      framework: framework
-    })));
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_framework_CardItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      item: framework
+    }));
   }))));
 });
 
@@ -52966,7 +52966,7 @@ function () {
           case 0:
             id = context.query.id;
             _context.next = 3;
-            return fetch("http://localhost:3000/api/frameworks/".concat(id));
+            return fetch("http://localhost:3000/api/frameworks/hub/".concat(id));
 
           case 3:
             res = _context.sent;
@@ -53017,7 +53017,7 @@ function () {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!****************************!*\
   !*** multi ./pages/hub.js ***!
   \****************************/
@@ -53042,5 +53042,5 @@ module.exports = dll_ecba6b44147cc8018369;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js","styles"]]]));;
+},[[6,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=hub.js.map

@@ -10,8 +10,17 @@ frameworks.get("/", function(req, res) {
   });
 });
 
+// Get a framework by id
+frameworks.get("/:id", function(req, res) {
+  Frameworks.findOne({ id: req.params.id }, function(err, framework) {
+    return res.json({
+      framework
+    });
+  });
+});
+
 // Get all frameworks for a particular hub
-frameworks.get("/:hubId", function(req, res) {
+frameworks.get("/hub/:hubId", function(req, res) {
   Frameworks.find({ hubId: req.params.hubId }, function(err, frameworks) {
     return res.json({
       frameworks

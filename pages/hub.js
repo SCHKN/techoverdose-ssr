@@ -2,7 +2,7 @@ import "semantic-ui-css/semantic.min.css";
 import "../style.css";
 import { Grid, Menu, Icon, Input } from "semantic-ui-react";
 import CardItem from "../components/framework/CardItem";
-import Link from "next/link";
+
 import { withRouter } from "next/router";
 
 const Hub = withRouter(props => (
@@ -25,12 +25,7 @@ const Hub = withRouter(props => (
         {props.frameworks &&
           props.frameworks.map(framework => (
             <Grid.Column>
-              <Link
-                as={`/framework/${framework.name}`}
-                href={`/framework?id=${framework.id}`}
-              >
-                <CardItem framework={framework} />
-              </Link>
+              <CardItem item={framework} />
             </Grid.Column>
           ))}
       </Grid.Row>
@@ -41,7 +36,7 @@ const Hub = withRouter(props => (
 Hub.getInitialProps = async function(context) {
   
   const { id } = context.query;
-  const res = await fetch(`http://localhost:3000/api/frameworks/${id}`);
+  const res = await fetch(`http://localhost:3000/api/frameworks/hub/${id}`);
   
   const data = await res.json();
   const { frameworks } = data;

@@ -26,6 +26,10 @@ const FrameworksSchema = new Schema({
   hubId: {
     type: Number,
     required: true
+  },
+  color: {
+    type: String,
+    required: false
   }
 });
 

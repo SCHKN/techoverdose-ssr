@@ -46,6 +46,12 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/framework/:frameworkId/:slug", (req, res) => {
+      const actualPage = "/framework";
+      const queryParams = { id: req.params.frameworkId };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
