@@ -1,0 +1,30 @@
+{
+  "name": "techoverdose-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
+    "mongoose": "^5.3.10",
+    "next": "^7.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.83.0"
+  },
+  "devDependencies": {
+    "file-loader": "^2.0.0",
+    "url-loader": "^1.1.2"
+  }
+}
