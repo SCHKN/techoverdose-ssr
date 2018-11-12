@@ -17,8 +17,7 @@ const CardItem = props => (
     </Segment>
     <Segment>
       <Label content="10k" icon="github" />
-      <Label content="1k" icon="reddit" />
-      <Label content="23k" icon="newspaper" />
+      <Label content="1k" icon="reddit orange" />
     </Segment>
   </Segment.Group>
 );

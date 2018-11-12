@@ -13,7 +13,7 @@ class VerticalMenu extends React.Component {
     return (
       <Menu vertical borderless>
         <Menu.Item>
-          <Menu.Header>Categories</Menu.Header>
+          <Menu.Header>Hubs</Menu.Header>
           <Menu.Menu>
             {hubs.map(hub => (
               <Link

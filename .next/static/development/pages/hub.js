@@ -12,99 +12,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-var _jsxFileName = "C:\\Users\\Antoine\\Desktop\\projects\\techoverdose-v2\\components\\framework\\CardItem.jsx";
 
 
 
 var CardItem = function CardItem(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"].Group, {
-    className: "card",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Group, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Image, {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Image, {
     size: "tiny",
-    src: props.framework.imageURL,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Content, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Header, {
-    as: "a",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: this
-  }, props.framework.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Meta, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: this
-  }, props.framework.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Extra, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
-  }, "Created in ", props.framework.creationYear))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    src: props.framework.imageURL
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Header, {
+    as: "a"
+  }, props.framework.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Meta, null, props.framework.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Item"].Extra, null, "Created in ", props.framework.creationYear))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
     content: "10k",
-    icon: "github",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: this
+    icon: "github"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
     content: "1k",
-    icon: "reddit",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    content: "23k",
-    icon: "newspaper",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
+    icon: "reddit orange"
   })));
 };
 
@@ -53019,8 +52943,7 @@ var Hub = Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(functio
   })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"], {
     columns: 3,
     stackable: true
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Row, null, props.frameworks && props.frameworks.map(function (_ref) {
-    var framework = _ref.framework;
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Row, null, props.frameworks && props.frameworks.map(function (framework) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
       as: "/framework/".concat(framework.name),
       href: "/framework?id=".concat(framework.id)
@@ -53033,44 +52956,32 @@ var Hub = Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(functio
 Hub.getInitialProps =
 /*#__PURE__*/
 function () {
-  var _ref2 = _asyncToGenerator(
+  var _ref = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(context) {
-    var id;
+    var id, res, data, frameworks;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             id = context.query.id;
+            _context.next = 3;
+            return fetch("http://localhost:3000/api/frameworks/".concat(id));
+
+          case 3:
+            res = _context.sent;
+            _context.next = 6;
+            return res.json();
+
+          case 6:
+            data = _context.sent;
+            frameworks = data.frameworks;
+            console.log(frameworks);
             return _context.abrupt("return", {
-              frameworks: [{
-                framework: {
-                  id: 1,
-                  name: "React",
-                  description: "Facebook's Front End Framework",
-                  creationYear: 2015,
-                  imageURL: "https://png.pngtree.com/svg/20170314/download_react_native_1115508.png"
-                }
-              }, {
-                framework: {
-                  id: 2,
-                  name: "Angular",
-                  description: "Google's Front End Framework",
-                  creationYear: 2013,
-                  imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"
-                }
-              }, {
-                framework: {
-                  id: 3,
-                  name: "Redux",
-                  description: "App State Management",
-                  creationYear: 2015,
-                  imageURL: "https://avatars0.githubusercontent.com/u/13142323?s=400&v=4"
-                }
-              }]
+              frameworks: frameworks
             });
 
-          case 2:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -53079,7 +52990,7 @@ function () {
   }));
 
   return function (_x) {
-    return _ref2.apply(this, arguments);
+    return _ref.apply(this, arguments);
   };
 }();
 
@@ -53106,7 +53017,7 @@ function () {
 
 /***/ }),
 
-/***/ 7:
+/***/ 5:
 /*!****************************!*\
   !*** multi ./pages/hub.js ***!
   \****************************/
@@ -53131,5 +53042,5 @@ module.exports = dll_ecba6b44147cc8018369;
 
 /***/ })
 
-},[[7,"static/runtime/webpack.js","styles"]]]));;
+},[[5,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=hub.js.map

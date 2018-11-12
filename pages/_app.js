@@ -5,7 +5,6 @@ import App, { Container } from "next/app";
 export default class CommonApp extends App {
   render() {
     const { hubs, Component, pageProps } = this.props;
-    console.log(pageProps);
     return (
       <Container>
         <AppLayout hubs={hubs}>
