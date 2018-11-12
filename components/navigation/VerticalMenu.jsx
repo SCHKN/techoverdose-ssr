@@ -6,19 +6,7 @@ import fetch from "isomorphic-unfetch";
 class VerticalMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hubs: []
-    };
   }
-
-  // componentWillMount = async () => {
-  //   const res = await fetch("http://localhost:3000/api/hubs");
-  //   const data = await res.json();
-  //   const { hubs } = data;
-  //   this.setState({
-  //     hubs
-  //   });
-  // };
 
   render() {
     const { hubs } = this.props;
