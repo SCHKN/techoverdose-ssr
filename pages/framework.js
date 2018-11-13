@@ -1,4 +1,12 @@
-import { Menu, Icon, Input, Tab, Segment, Divider } from "semantic-ui-react";
+import {
+  Menu,
+  Icon,
+  Input,
+  Tab,
+  Segment,
+  Divider,
+  Button
+} from "semantic-ui-react";
 import FrameworkHeader from "../components/framework/FrameworkHeader";
 import { withRouter } from "next/router";
 import GitHubRepo from "../components/github/GitHubRepo";
@@ -29,7 +37,7 @@ class Framework extends React.Component {
       ) {
         this.setState(prevState => ({ page: prevState.page + 1 }));
         const repositories = await this.fetchRepos(
-          this.state.framework.id,
+          this.state.framework._id,
           this.state.page
         );
         this.setState({
@@ -47,7 +55,7 @@ class Framework extends React.Component {
         page: 1
       });
       const repositories = await this.fetchRepos(
-        this.state.framework.id,
+        this.state.framework._id,
         0,
         this.state.searchValue
       );
@@ -91,6 +99,11 @@ class Framework extends React.Component {
   render() {
     return (
       <div style={{ marginLeft: "10px" }}>
+        <Button className="tech-ghost-blue">Back To Hub</Button>
+        <Button icon labelPosition="left" className="tech-blue">
+          Subscribe to RSS
+          <Icon name="rss" />
+        </Button>
         <FrameworkHeader framework={this.state.framework} />
         <Tab
           {...this.state}

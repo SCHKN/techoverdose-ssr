@@ -1,6 +1,6 @@
 import "semantic-ui-css/semantic.min.css";
 import "../style.css";
-import { Grid, Menu, Icon, Input, Divider } from "semantic-ui-react";
+import { Grid, Menu, Icon, Input, Divider, Button } from "semantic-ui-react";
 import CardItem from "../components/framework/CardItem";
 
 import { withRouter } from "next/router";
@@ -8,6 +8,7 @@ import HubHeader from "../components/hub/HubHeader";
 
 const Hub = withRouter(props => (
   <div style={{ marginLeft: "10px" }}>
+    <Button className="tech-ghost-blue">Back To Home</Button>
     <HubHeader />
     <Divider horizontal>Related Items</Divider>
     <Menu borderless>

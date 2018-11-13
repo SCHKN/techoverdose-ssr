@@ -3,16 +3,20 @@ const Frameworks = require("../models/Frameworks");
 
 // Get all frameworks regardless of the hub.
 frameworks.get("/", function(req, res) {
-  Frameworks.find({}, function(err, frameworks) {
-    return res.json({
-      frameworks
+  var page = req.query.page;
+  Frameworks.find({})
+    .skip(page * 16)
+    .limit(16)
+    .then(frameworks => {
+      return res.json({
+        frameworks
+      });
     });
-  });
 });
 
 // Get a framework by id
 frameworks.get("/:id", function(req, res) {
-  Frameworks.findOne({ id: req.params.id }, function(err, framework) {
+  Frameworks.findOne({ _id: req.params.id }, function(err, framework) {
     return res.json({
       framework
     });

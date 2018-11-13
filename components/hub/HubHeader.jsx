@@ -6,7 +6,7 @@ export default class HubHeader extends Component {
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size="small" src='https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/designer_kcp7.svg' />
+            <Item.Image size="small" src='https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/JavaScript_Frameworks_x21l.svg' />
 
             <Item.Content>
               <Item.Header>Front End Development</Item.Header>

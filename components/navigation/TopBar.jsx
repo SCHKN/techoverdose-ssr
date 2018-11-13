@@ -12,12 +12,12 @@ const TopBar = () => (
     </Menu.Item>
     <Menu.Menu position="right">
       <Menu.Item>
-        <Button inverted color="blue">
+        <Button color="tech-blue">
           Log In
         </Button>
       </Menu.Item>
       <Menu.Item>
-        <Button inverted color="red">
+        <Button inverted color="tech-ghost-blue">
           Sign Up
         </Button>
       </Menu.Item>

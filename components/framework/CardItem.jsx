@@ -5,19 +5,24 @@ const CardItem = props => (
     <Segment>
       <Item.Group>
         <Item>
-          <Item.Image size="tiny" src={props.item.imageURL} />
+          <Item.Image
+            size="tiny"
+            src={
+              props.item.imageURL
+                ? props.item.imageURL
+                : "/static/placeholder.jpg"
+            }
+          />
 
           <Item.Content>
             <Link
-              as={`/framework/${props.item.id}/${props.item.name}`}
-              href={`/framework?id=${props.item.id}`}
+              as={`/framework/${props.item._id}/${props.item.name}`}
+              href={`/framework?id=${props.item._id}`}
             >
-              <Item.Header as="a">
-                {props.item.name}
+              <Item.Header as="a" style={{ fontSize: "100%" }}>
+                {props.item.displayName}
               </Item.Header>
             </Link>
-            <Item.Meta>{props.item.description}</Item.Meta>
-            <Item.Extra>Created in {props.item.creationYear}</Item.Extra>
           </Item.Content>
         </Item>
       </Item.Group>
@@ -25,9 +30,13 @@ const CardItem = props => (
     <Segment>
       <Label content="10k" icon="github" />
       <Label content="1k" icon="reddit" />
-      <Label floated="right" className="tech-blue">
-        Go!
-      </Label>
+      <Link
+        as={`/framework/${props.item._id}/${props.item.name}`}
+        href={`/framework?id=${props.item._id}`}>
+        <Label floated="right" className="tech-blue" as="a">
+          Go!
+        </Label>
+      </Link>
     </Segment>
   </Segment.Group>
 );

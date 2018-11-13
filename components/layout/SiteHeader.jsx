@@ -12,9 +12,10 @@ export default class SiteHeader extends Component {
             />
 
             <Item.Content>
-              <Item.Header>Tech Overdose goes 2.0</Item.Header>
+              <Item.Header>Welcome Home</Item.Header>
 
               <Item.Meta>
+                The best Tech aggregator comes back with new exciting features.
                 Over the past six months, our engineers work to provide you with
                 the best <b>resources</b> we could find for your favorite techs.
               </Item.Meta>

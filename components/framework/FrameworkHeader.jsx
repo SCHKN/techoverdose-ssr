@@ -12,10 +12,11 @@ class FrameworkHeader extends Component {
               <Item.Image size="tiny" src={framework.imageURL} />
 
               <Item.Content>
-                <Item.Header>{framework.name}</Item.Header>
+                <Item.Header>{framework.displayName}</Item.Header>
 
                 <Item.Meta>{framework.description}</Item.Meta>
-                <Item.Extra>Created in {framework.creationYear}</Item.Extra>
+                <Item.Extra>{framework.released ? "Released " + framework.released : ""}</Item.Extra>
+                <Item.Extra>{framework.creator ? "Made by " + framework.creator : ""}</Item.Extra>
               </Item.Content>
             </Item>
           </Item.Group>

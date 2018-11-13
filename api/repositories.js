@@ -1,5 +1,6 @@
 const repositories = require("express").Router();
 const Repositories = require("../models/Repositories");
+var mongoose = require('mongoose');
 
 repositories.get("/framework/:id", function(req, res) {
   var page = req.query.page;
@@ -12,7 +13,7 @@ repositories.get("/framework/:id", function(req, res) {
           $regex: new RegExp(q ? q.toLowerCase() : ""),
           $options: "i"
         },
-        frameworkId: { $eq: parseInt(frameworkId) }
+        frameworkId: { $eq: mongoose.Types.ObjectId(frameworkId) }
       }
     }
   ])

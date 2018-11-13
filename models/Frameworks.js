@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const FrameworksSchema = new Schema({
-  id: {
-    type: Number,
+  name: {
+    type: String,
     required: true
   },
-  name: {
+  displayName: {
     type: String,
     required: true
   },
@@ -15,9 +15,13 @@ const FrameworksSchema = new Schema({
     type: String,
     required: true
   },
-  creationYear: {
-    type: Number,
-    required: true
+  released: {
+    type: String,
+    required: false
+  },
+  creator: {
+    type: String,
+    required: false
   },
   imageURL: {
     type: String,
@@ -26,10 +30,6 @@ const FrameworksSchema = new Schema({
   hubId: {
     type: Number,
     required: true
-  },
-  color: {
-    type: String,
-    required: false
   }
 });
 
