@@ -1,102 +1,120 @@
-import { Menu, Icon, Input, Tab, Segment } from "semantic-ui-react";
+import { Menu, Icon, Input, Tab, Segment, Divider } from "semantic-ui-react";
 import FrameworkHeader from "../components/framework/FrameworkHeader";
 import { withRouter } from "next/router";
 import GitHubRepo from "../components/github/GitHubRepo";
 
-const Framework = withRouter(props => (
-  <div style={{ marginLeft: "10px" }}>
-    <Menu borderless>
-      <Menu.Menu position="right">
-        <Menu.Item>
-          <Input placeholder="Search..." />
-        </Menu.Item>
-        <Menu.Item>
-          <Icon name="list" />
-        </Menu.Item>
-        <Menu.Item>
-          <Icon name="grid layout" />
-        </Menu.Item>
-      </Menu.Menu>
-    </Menu>
-    <FrameworkHeader framework={props.framework} />
-    <Tab
-      {...props}
-      panes={[
-        {
-          menuItem: { key: "github", icon: "github", content: "GitHub Repos" },
-          render: ({ repos, framework }) => (
-            <div
-              style={{
-                maxHeight: "70vh",
-                overflowY: "auto",
-                paddingRight: "10px",
-                marginTop: "10px"
-              }}
-            >
-              {repos.map(repo => (
-                <GitHubRepo repo={repo} framework={framework} />
-              ))}
-            </div>
-          )
-        }
-      ]}
-    />
-  </div>
-));
+class Framework extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      repositories: [],
+      page: 1
+    };
+  }
 
-Framework.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const res = await fetch(`http://localhost:3000/api/frameworks/${id}`);
+  componentWillMount() {
+    this.setState({
+      framework: this.props.framework,
+      repositories: this.props.repositories
+    });
+  }
 
-  const data = await res.json();
-  const { framework } = data;
-  return {
-    framework,
-    repos: [
-      {
-        name: "first repo",
-        imageURL: "https://avatars3.githubusercontent.com/u/35979086?v=4",
-        owner: "bob",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
-      },
-      {
-        name: "second repo",
-        owner: "bab",
-        imageURL: "https://avatars1.githubusercontent.com/u/38835652?v=4",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
-      },
-      {
-        name: "third repo",
-        owner: "bib",
-        imageURL: "https://avatars2.githubusercontent.com/u/17981963?v=4",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
-      },
-      {
-        name: "first repo",
-        imageURL: "https://avatars3.githubusercontent.com/u/35979086?v=4",
-        owner: "bob",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
-      },
-      {
-        name: "first repo",
-        imageURL: "https://avatars3.githubusercontent.com/u/35979086?v=4",
-        owner: "bob",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
-      },
-      {
-        name: "first repo",
-        imageURL: "https://avatars3.githubusercontent.com/u/35979086?v=4",
-        owner: "bob",
-        description:
-          "⚡️  [WIP]  Build blazing fast websites for any CMS or data with Vue.js"
+  handleScroll = async() => {
+    if (this.scroller) {
+      if (
+        this.scroller.scrollHeight - this.scroller.scrollTop ===
+        this.scroller.clientHeight
+      ) {
+        this.setState(prevState => ({ page: prevState.page + 1 }));
+        const repositories = await this.fetchRepos(this.state.framework.id, this.state.page);
+        this.setState({
+          repositories: [...this.state.repositories, ...repositories]
+        });
       }
-    ]
+    }
   };
-};
 
-export default Framework;
+  fetchRepos = async (id, page) => {
+    const repositoriesRaw = await fetch(
+      `http://localhost:3000/api/repositories/framework/${id}?page=${page}`
+    );
+    const repositoriesData = await repositoriesRaw.json();
+    const { repositories } = repositoriesData;
+    return repositories;
+  };
+
+  static async getInitialProps(context) {
+    const { id } = context.query;
+
+    // Fetching framework detail
+    const res = await fetch(`http://localhost:3000/api/frameworks/${id}`);
+    const data = await res.json();
+    const { framework } = data;
+
+    // Fetching repos
+    const repositoriesRaw = await fetch(
+      `http://localhost:3000/api/repositories/framework/${id}?page=0`
+    );
+    const repositoriesData = await repositoriesRaw.json();
+    const { repositories } = repositoriesData;
+
+    return {
+      framework,
+      repositories
+    };
+  }
+
+  render() {
+    return (
+      <div style={{ marginLeft: "10px" }}>
+        <Menu borderless>
+          <Menu.Menu position="right">
+            <Menu.Item>
+              <Input placeholder="Search..." />
+            </Menu.Item>
+            <Menu.Item>
+              <Icon name="list" />
+            </Menu.Item>
+            <Menu.Item>
+              <Icon name="grid layout" />
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+        <Divider horizontal>Framework</Divider>
+        <FrameworkHeader framework={this.state.framework} />
+        <Tab
+          {...this.state}
+          panes={[
+            {
+              menuItem: {
+                key: "github",
+                icon: "github",
+                content: "GitHub Repos"
+              },
+              render: ({ repositories, framework }) => (
+                <div
+                  ref={scroller => {
+                    this.scroller = scroller;
+                  }}
+                  onScroll={this.handleScroll}
+                  style={{
+                    maxHeight: "70vh",
+                    overflowY: "auto",
+                    paddingRight: "10px",
+                    marginTop: "10px"
+                  }}
+                >
+                  {repositories.map(repo => (
+                    <GitHubRepo repo={repo} framework={framework} />
+                  ))}
+                </div>
+              )
+            }
+          ]}
+        />
+      </div>
+    );
+  }
+}
+
+export default withRouter(Framework);
