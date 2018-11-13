@@ -374,8 +374,31 @@
   padding: 0 10px !important;
 }
 
+::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6d69f9 !important;
+}
+
 .card {
-    margin-bottom: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.tech-blue {
+  background: #6d69f9 !important;
+  color: white !important;
+}
+
+.tech-ghost-blue {
+  background: white !important;
+  color: #6d69f9 !important;
+  border: 1px solid #6d69f9 !important;
+}
+
+.blue {
+  color: #6d69f9 !important;
 }
 
 

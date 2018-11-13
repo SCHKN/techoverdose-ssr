@@ -6,7 +6,7 @@ export default class GitHubRepo extends Component {
     const { repo, framework } = this.props;
     return (
       <Segment.Group>
-        <Segment fluid style={{ borderLeft: `5px solid ${framework.color}` }}>
+        <Segment fluid>
           <Item.Group>
             <Item>
               <Item.Image src={repo.imageURL} size="tiny" />
@@ -18,7 +18,9 @@ export default class GitHubRepo extends Component {
                 <Item.Meta>by {repo.owner}</Item.Meta>
                 <Item.Description>{repo.description}</Item.Description>
                 <Item.Extra>Updated 2 minutes ago</Item.Extra>
-                <Item.Extra>Written in <b>{repo.language}</b></Item.Extra>
+                <Item.Extra>
+                  Written in <b>{repo.language}</b>
+                </Item.Extra>
               </Item.Content>
             </Item>
           </Item.Group>

@@ -11,7 +11,7 @@ class VerticalMenu extends React.Component {
   render() {
     const { hubs } = this.props;
     return (
-      <Menu vertical borderless>
+      <Menu vertical borderless fluid>
         <Menu.Item>
           <Menu.Header>Hubs</Menu.Header>
           <Menu.Menu>
