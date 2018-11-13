@@ -46,13 +46,13 @@ cron.schedule("*/10 * * * * *", () => {
       .then(function(response) {
         if (response.data && response.data.items) {
           response.data.items.forEach(item => {
-            console.log(item.name)
+            console.log(item.name);
             Repositories.findOne({ name: item.name }, function(
               err,
               existingRepo
             ) {
               if (!existingRepo) {
-                console.log("not existing")
+                console.log("not existing");
                 const repository = new Repositories({
                   id: parseInt(item.id),
                   name: item.name,
@@ -65,11 +65,14 @@ cron.schedule("*/10 * * * * *", () => {
                   forks: item.forks_count,
                   score: item.score,
                   language: item.language,
-                  frameworkId: framework._id
+                  frameworkId: framework._id,
+                  createdAt: Date.now()
                 });
-                repository.save(function(err, results) { if (!err) {
-                    console.log("ok!");
-                }});
+                repository.save(function(err, results) {
+                  if (!err) {
+                    incrementNumberOfRepositories(framework._id);
+                  }
+                });
               }
             });
           });
@@ -80,3 +83,23 @@ cron.schedule("*/10 * * * * *", () => {
       });
   }
 });
+
+// Increment clip count for the streamer on save
+function incrementNumberOfRepositories(frameworkId) {
+  Frameworks.updateOne(
+    { _id: frameworkId },
+    {
+      $inc: { numberOfRepositories: 1 }
+    },
+    {
+      upsert: true
+    },
+    function(err, result) {
+      if (!err) {
+        "I increment the number of repositories for " + frameworkId;
+      } else {
+        console.log(err);
+      }
+    }
+  );
+}

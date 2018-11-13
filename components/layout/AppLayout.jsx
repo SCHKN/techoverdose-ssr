@@ -20,7 +20,6 @@ const AppLayout = props => (
       <Divider horizontal />
       <Grid stackable columns={2}>
         <Grid.Column width={5}>
-          <Button className="tech-blue">Add A Resource</Button>
           <VerticalMenu hubs={props.hubs} />
           <ActivityMenu />
         </Grid.Column>

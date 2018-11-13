@@ -36,7 +36,8 @@ instance
           creator: item.created_by,
           imageURL:
             "https://i2.wp.com/www.foot.com/wp-content/uploads/2017/06/placeholder-square.jpg?ssl=1",
-          hubId: 0
+          hubId: 0,
+          numberOfRepositories: 0
         });
         framework.save(function(err, results) {
           console.log("Saved a new framework");

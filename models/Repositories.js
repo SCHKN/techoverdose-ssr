@@ -23,6 +23,7 @@ const RepositoriesSchema = new Schema({
     type: String,
     required: true
   },
+  // Updated At coming from Github
   updatedAt: {
     type: Date,
     required: true
@@ -49,6 +50,10 @@ const RepositoriesSchema = new Schema({
   },
   frameworkId: {
     type: mongoose.Types.ObjectId,
+    required: true
+  },
+  createdAt: {
+    type: Date,
     required: true
   }
 });

@@ -38,7 +38,8 @@ class Framework extends React.Component {
         this.setState(prevState => ({ page: prevState.page + 1 }));
         const repositories = await this.fetchRepos(
           this.state.framework._id,
-          this.state.page
+          this.state.page,
+          this.state.searchValue
         );
         this.setState({
           repositories: [...this.state.repositories, ...repositories]
@@ -52,7 +53,8 @@ class Framework extends React.Component {
     this.timeout = setTimeout(async () => {
       this.setState({
         searchValue,
-        page: 1
+        page: 1,
+        repositories: []
       });
       const repositories = await this.fetchRepos(
         this.state.framework._id,
@@ -66,6 +68,10 @@ class Framework extends React.Component {
   };
 
   fetchRepos = async (id, page, searchValue) => {
+    console.log(
+      `http://localhost:3000/api/repositories/framework/${id}?page=${page}` +
+        (searchValue ? `&q=${searchValue}` : "")
+    );
     const repositoriesRaw = await fetch(
       `http://localhost:3000/api/repositories/framework/${id}?page=${page}` +
         (searchValue ? `&q=${searchValue}` : "")
@@ -97,69 +103,54 @@ class Framework extends React.Component {
   }
 
   render() {
+    const { repositories, framework } = this.state;
     return (
       <div style={{ marginLeft: "10px" }}>
-        <Button className="tech-ghost-blue">Back To Hub</Button>
+        <Button className="tech-ghost-blue">Back To Home</Button>
         <Button icon labelPosition="left" className="tech-blue">
           Subscribe to RSS
           <Icon name="rss" />
         </Button>
         <FrameworkHeader framework={this.state.framework} />
-        <Tab
-          {...this.state}
-          panes={[
-            {
-              menuItem: {
-                key: "github",
-                icon: "github",
-                content: "GitHub Repos"
-              },
-              render: ({ repositories, framework }) => (
-                <div>
-                  <Menu borderless style={{ marginTop: "10px" }}>
-                    <Menu.Menu position="right">
-                      <Menu.Item>
-                        <Input
-                          className="icon"
-                          icon="code"
-                          iconPosition="left"
-                          placeholder="Search A Repository..."
-                          size="small"
-                          onChange={(e, { value }) =>
-                            this.onSearchChange(value)
-                          }
-                        />
-                      </Menu.Item>
-                      <Menu.Item>
-                        <Icon name="list" />
-                      </Menu.Item>
-                      <Menu.Item>
-                        <Icon name="grid layout" />
-                      </Menu.Item>
-                    </Menu.Menu>
-                  </Menu>
-                  <Divider horizontal>Results</Divider>
-                  <div
-                    ref={scroller => {
-                      this.scroller = scroller;
-                    }}
-                    onScroll={this.handleScroll}
-                    style={{
-                      maxHeight: "70vh",
-                      overflowY: "auto",
-                      paddingRight: "10px",
-                      marginTop: "10px"
-                    }}
-                  >
-                    {repositories.map(repo => (
-                      <GitHubRepo repo={repo} framework={framework} />
-                    ))}
-                  </div>
-                </div>
-              )
-            }
-          ]}
-        />
+        <div>
+          <Menu borderless style={{ marginTop: "10px" }} size="big">
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Input
+                  className="icon"
+                  icon="code"
+                  iconPosition="left"
+                  placeholder="Search A Repository..."
+                  size="small"
+                  onChange={(e, { value }) => this.onSearchChange(value)}
+                />
+              </Menu.Item>
+              <Menu.Item>
+                <Icon name="list" />
+              </Menu.Item>
+              <Menu.Item>
+                <Icon name="grid layout" />
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
+          <Divider horizontal>Results</Divider>
+          <div
+            ref={scroller => {
+              this.scroller = scroller;
+            }}
+            onScroll={this.handleScroll}
+            style={{
+              maxHeight: "60vh",
+              overflowY: "auto",
+              paddingRight: "10px",
+              marginTop: "10px"
+            }}
+          >
+            {repositories.map(repo => (
+              <GitHubRepo repo={repo} framework={framework} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

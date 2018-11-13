@@ -28,7 +28,7 @@ const CardItem = props => (
       </Item.Group>
     </Segment>
     <Segment>
-      <Label content="10k" icon="github" />
+      <Label content={props.item.numberOfRepositories} icon="github" />
       <Label content="1k" icon="reddit" />
       <Link
         as={`/framework/${props.item._id}/${props.item.name}`}

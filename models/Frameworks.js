@@ -30,6 +30,11 @@ const FrameworksSchema = new Schema({
   hubId: {
     type: Number,
     required: true
+  },
+  numberOfRepositories: {
+    type: Number,
+    required: true,
+    default: 0
   }
 });
 

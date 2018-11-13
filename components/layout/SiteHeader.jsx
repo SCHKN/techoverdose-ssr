@@ -1,26 +1,24 @@
 import React, { Component } from "react";
-import { Segment, Item } from "semantic-ui-react";
+import { Segment, Item, Label, Icon } from "semantic-ui-react";
 export default class SiteHeader extends Component {
   render() {
     return (
       <Segment>
+        <Label attached="top" className="tech-blue">
+          <Icon name="hand spock" />
+          Welcome
+        </Label>
         <Item.Group>
           <Item>
             <Item.Image
               size="small"
-              src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/welcome_3gvl.svg"
+              src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/hello_aeia.svg"
             />
 
             <Item.Content>
-              <Item.Header>Welcome Home</Item.Header>
+              <Item.Header>Tech Overdose Goes 2.0</Item.Header>
 
-              <Item.Meta>
-                The best Tech aggregator comes back with new exciting features.
-                Over the past six months, our engineers work to provide you with
-                the best <b>resources</b> we could find for your favorite techs.
-              </Item.Meta>
-              <Item.Extra>Datasources available : GitHub, Reddit</Item.Extra>
-              <Item.Extra>Hubs available : Front End Development, Blockchain</Item.Extra>
+              <Item.Meta />
             </Item.Content>
           </Item>
         </Item.Group>

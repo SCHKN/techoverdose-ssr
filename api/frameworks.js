@@ -4,7 +4,22 @@ const Frameworks = require("../models/Frameworks");
 // Get all frameworks regardless of the hub.
 frameworks.get("/", function(req, res) {
   var page = req.query.page;
-  Frameworks.find({})
+  var q = req.query.q;
+  Frameworks.aggregate([
+    {
+      $match: {
+        name: {
+          $regex: new RegExp(q ? q.toLowerCase() : ""),
+          $options: "i"
+        }
+      }
+    },
+    {
+      $sort: {
+        numberOfRepositories: -1
+      }
+    }
+  ])
     .skip(page * 15)
     .limit(15)
     .then(frameworks => {

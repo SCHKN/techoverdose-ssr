@@ -1,6 +1,6 @@
 import "semantic-ui-css/semantic.min.css";
 import "../style.css";
-import { Grid, Menu, Icon, Button } from "semantic-ui-react";
+import { Grid, Menu, Icon, Input } from "semantic-ui-react";
 import CardItem from "./../components/framework/CardItem";
 import SiteHeader from "../components/layout/SiteHeader";
 
@@ -28,7 +28,10 @@ class Index extends React.Component {
         this.scroller.clientHeight
       ) {
         this.setState(prevState => ({ page: prevState.page + 1 }));
-        const frameworks = await this.fetchFrameworks(this.state.page);
+        const frameworks = await this.fetchFrameworks(
+          this.state.page,
+          this.state.searchValue
+        );
         this.setState({
           frameworks: [...this.state.frameworks, ...frameworks]
         });
@@ -36,10 +39,32 @@ class Index extends React.Component {
     }
   };
 
-  fetchFrameworks = async page => {
-    console.log(`http://localhost:3000/api/frameworks?page=${page}`)
+  onSearchChange = async searchValue => {
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(async () => {
+      this.setState({
+        searchValue,
+        page: 1,
+        frameworks: []
+      });
+      const frameworks = await this.fetchFrameworks(
+        0,
+        this.state.searchValue
+      );
+      this.setState({
+        frameworks
+      });
+    }, 1000);
+  };
+
+  fetchFrameworks = async (page, searchValue) => {
+    console.log(
+      `http://localhost:3000/api/frameworks?page=${page}` +
+        (searchValue ? `&q=${searchValue}` : "")
+    );
     const frameworksRaw = await fetch(
-      `http://localhost:3000/api/frameworks?page=${page}`
+      `http://localhost:3000/api/frameworks?page=${page}` +
+        (searchValue ? `&q=${searchValue}` : "")
     );
     const frameworksData = await frameworksRaw.json();
     const { frameworks } = frameworksData;
@@ -61,8 +86,18 @@ class Index extends React.Component {
     return (
       <div style={{ marginLeft: "10px" }}>
         <SiteHeader />
-        <Menu borderless>
+        <Menu borderless size="big">
           <Menu.Menu position="right">
+            <Menu.Item>
+              <Input
+                className="icon"
+                icon="code"
+                iconPosition="left"
+                placeholder="Search A Topic..."
+                size="small"
+                onChange={(e, { value }) => this.onSearchChange(value)}
+              />
+            </Menu.Item>
             <Menu.Item>
               <Icon name="list" />
             </Menu.Item>
@@ -77,7 +112,7 @@ class Index extends React.Component {
           }}
           onScroll={this.handleScroll}
           style={{
-            maxHeight: "70vh",
+            maxHeight: "60vh",
             overflowY: "auto",
             overflowX: "hidden",
             padding: "10px"
