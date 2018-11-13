@@ -48,7 +48,7 @@ const RepositoriesSchema = new Schema({
     required: false
   },
   frameworkId: {
-    type: Number,
+    type: mongoose.Types.ObjectId,
     required: true
   }
 });

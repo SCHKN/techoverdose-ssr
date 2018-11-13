@@ -26,16 +26,16 @@ export default class GitHubRepo extends Component {
           </Item.Group>
         </Segment>
         <Segment fluid>
-          <Grid columns={12}>
+          <Grid columns={8}>
             <Grid.Row>
               <Grid.Column>
-                <Icon name="star" />5
+                <Icon name="star" />{repo.stars}
               </Grid.Column>
               <Grid.Column>
-                <Icon name="eye" />5
+                <Icon name="eye" />{repo.watchers}
               </Grid.Column>
               <Grid.Column>
-                <Icon name="fork" />5
+                <Icon name="fork" />{repo.forks}
               </Grid.Column>
               <Grid.Column>
                 <Rating
