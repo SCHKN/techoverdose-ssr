@@ -5,8 +5,8 @@ const Frameworks = require("../models/Frameworks");
 frameworks.get("/", function(req, res) {
   var page = req.query.page;
   Frameworks.find({})
-    .skip(page * 16)
-    .limit(16)
+    .skip(page * 15)
+    .limit(15)
     .then(frameworks => {
       return res.json({
         frameworks
